@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
@@ -21,7 +22,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // 1) MIDDLEWARES
-
+app.use(cors());
 app.use(express.json()); // This will transform all requests to json so we can access req.body directly
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
