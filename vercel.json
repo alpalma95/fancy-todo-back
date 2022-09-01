@@ -1,9 +1,10 @@
 {
   "version": 2,
+  "name": "fancy-todo-list",
   "builds": [
     {
-      "src": "server.js",
-      "use": "@now/node"
+      "src": "app.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
