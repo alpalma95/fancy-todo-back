@@ -3,8 +3,7 @@
   "name": "fancy-todo-list",
   "builds": [
     {
-      "src": "app.js",
-      "use": "express"
+      "src": "app.js"
     }
   ],
   "routes": [
