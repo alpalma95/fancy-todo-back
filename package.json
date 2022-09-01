@@ -2,15 +2,16 @@
   "name": "men-app",
   "version": "1.0.0",
   "description": "boilerplate for express and mongoose",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon index.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js"
   },
   "author": "Al",
   "license": "ISC",
   "dependencies": {
+    "@vercel/node": "^2.5.11",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.1",
     "eslint-plugin-react": "^7.30.1",
