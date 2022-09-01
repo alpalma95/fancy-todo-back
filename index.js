@@ -23,6 +23,14 @@ mongoose
 // 1) MIDDLEWARES
 
 app.use(express.json()); // This will transform all requests to json so we can access req.body directly
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-type, Accept'
+  );
+  next();
+});
 
 // ROUTERS
 
