@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Todo = require('../models/todoModel');
 exports.getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find();
@@ -17,8 +18,7 @@ exports.getAllUsers = async (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
   try {
-    const user = await User.filter({ _id: req.params.id });
-
+    const user = await User.findOne({ _id: req.params.id }).populate('todos');
     res.status(200).json({
       status: 'success',
       data: {

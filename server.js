@@ -1,23 +1,19 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
 dotenv.config({ path: './config.env' });
+
 const app = require('./app');
 
-//UNCOMMENT CODE BELLOW ONCE WE HAVE A DATABASE SET UP
+const DB = process.env.DATABASE;
 
-// const DB = process.env.DATABASE.replace(
-//   '<PASSWORD>',
-//   process.env.DATABASE_PASSWORD
-// );
-
-// mongoose
-//   .connect(DB, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false,
-//   })
-//   .then(() => console.log('DB connection successful!'));
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log('DB connection successful!'))
+  .catch((err) => console.log(err));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
