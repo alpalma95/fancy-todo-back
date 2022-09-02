@@ -6,11 +6,11 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(todoController.getAllTodos)
-  .post(todoController.createTodo)
-  .delete(todoController.deleteCompleted);
+  .get(authController.protect, todoController.getAllTodos)
+  .post(authController.protect, todoController.createTodo)
+  .delete(authController.protect, todoController.deleteCompleted);
 router
-  .route('/:id')
+  .route('/:uid')
   .patch(authController.protect, todoController.changeFinishedStatus);
 
 module.exports = router;

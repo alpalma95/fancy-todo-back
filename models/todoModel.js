@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const todoSchema = new mongoose.Schema({
-  _id: {
+  uid: {
     type: String,
     unique: [true, 'Ids must be unique'],
   },

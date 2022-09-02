@@ -11,7 +11,6 @@ exports.signup = async (req, res, next) => {
   // We need to specify this when creating users (instead of directly passing the req.body as an object) so users can't set themselves as admins. Even if they send the admin role set to true, we won't store this. For setting users as admins, we can do it manually on Compass
   try {
     const newUser = await User.create({
-      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       passwordConfirm: req.body.passwordConfirm,
@@ -21,6 +20,7 @@ exports.signup = async (req, res, next) => {
 
     res.status(201).json({
       status: 'success',
+      message: `Welcome ${req.body.email}! 🙂`,
       token,
       data: {
         user: newUser,
@@ -50,6 +50,7 @@ exports.login = async (req, res, next) => {
     const token = signToken(user._id);
     res.status(200).json({
       status: 'success',
+      message: `Welcome ${req.body.email}! 🙂`,
       token,
     });
   } catch (err) {

@@ -17,10 +17,10 @@ exports.getAllTodos = async (req, res, next) => {
 };
 
 exports.createTodo = async (req, res, next) => {
-  // Pass _id created with npm uuidv4
+  console.log(req.body);
   try {
     const newTodo = await Todo.create({
-      _id: req.body._id,
+      uid: req.body.uid,
       text: req.body.text,
       owner: req.user._id,
     });
@@ -50,9 +50,10 @@ exports.deleteCompleted = async (req, res, next) => {
 };
 
 exports.changeFinishedStatus = async (req, res, next) => {
+  console.log(req.params);
   try {
-    // In the Front end, we basically send the new status by negating the current
-    const todo = await Todo.findByIdAndUpdate(req.params.id, req.body);
+    const todo = await Todo.findOneAndUpdate({ uid: req.params.uid }, req.body);
+    console.log(todo);
 
     res.status(200).json({
       status: 'success',
